@@ -1,3 +1,5 @@
+require 'csv'
+
 class Gossip
     attr_accessor :author, :content
   def initialize (author, content)
@@ -17,9 +19,12 @@ class Gossip
     return all_gossips
   end
   def self.find(id)
-  index = id.to_i - 1
-  CSV.read("./db/gossip.csv").each do |csv_line|# lire le CSV -> array de lignes
-  # prendre la ligne à l'index
-  # retourner un Gossip construit avec author/content
+    index = id.to_i - 1
+    rows = CSV.read("./db/gossip.csv")# lire le CSV -> array de lignes
+    row = rows[index]# prendre la ligne à l'index
+    return nil if row.nil?
+    author = row[0]
+    content = row[1]
+    Gossip.new(author, content)# retourner un Gossip construit avec author/content
   end
 end

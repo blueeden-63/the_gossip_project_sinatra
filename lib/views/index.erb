@@ -5,11 +5,10 @@
   <body>
     <h1>Mon super site de gossip, depuis le dossier views !</h1>
     <a href="/gossips/new/">http://localhost:9294/gossips/new/</a>
-    <% gossips.each do |gossip| %>
-    <p>
-        <%= gossip.author %><br/>
-      <%= gossip.content %>
-      </p>
-  <% end %>
+    <% @gossips.each_with_index do |gossip, index| %>
+      <a href="/gossips/<%= index + 1 %>/">
+        Voir le potin <%= index + 1 %></n>
+      </a>
+    <% end %>
   </body>
 </html>
