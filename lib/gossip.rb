@@ -16,4 +16,10 @@ class Gossip
     end
     return all_gossips
   end
+  def self.find(id)
+  index = id.to_i - 1
+  CSV.read("./db/gossip.csv").each do |csv_line|# lire le CSV -> array de lignes
+  # prendre la ligne à l'index
+  # retourner un Gossip construit avec author/content
+  end
 end
